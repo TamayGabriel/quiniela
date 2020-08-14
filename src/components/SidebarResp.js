@@ -18,11 +18,15 @@ import Typography from "@material-ui/core/Typography";
 
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
-import ListaLibros from "./ListaLibros";
+//import ListaLibros from "./ListaLibros";
+import FormJugada from "./FormJugada";
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
+  icon: {
+    color: "white",
+  },
   root: {
     display: "flex",
   },
@@ -36,20 +40,24 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
-      background: "#0f2027",
+      background: "#224858",
+      color: "#fff",
     },
   },
   menuButton: {
     marginRight: theme.spacing(2),
     [theme.breakpoints.up("sm")]: {
       display: "none",
+      color: "#fff",
+      background: "#224858",
     },
   },
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
-    background: "#fafafa",
+    color: "#fff",
+    background: "#224858",
   },
   content: {
     flexGrow: 1,
@@ -61,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     textAlign: "center",
-    color: theme.palette.text.secondary,
+    color: theme.palette.text.primary,
   },
   titlenav: {
     float: "center",
@@ -88,7 +96,11 @@ function SidebarResp(props) {
         {["Profile", "Books"].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              {index % 2 === 0 ? (
+                <InboxIcon className={classes.icon} />
+              ) : (
+                <MailIcon className={classes.icon} />
+              )}
             </ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
@@ -99,7 +111,11 @@ function SidebarResp(props) {
         {["Settings", "Salir"].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              {index % 2 === 0 ? (
+                <InboxIcon className={classes.icon} />
+              ) : (
+                <MailIcon className={classes.icon} />
+              )}
             </ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
@@ -126,7 +142,7 @@ function SidebarResp(props) {
             <MenuIcon />
           </IconButton>
           <div className={classes.titlenav}>
-            <h2>Timi's Library</h2>
+            <h2>Quiniela</h2>
           </div>
         </Toolbar>
       </AppBar>
@@ -163,7 +179,7 @@ function SidebarResp(props) {
       </nav>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <ListaLibros />
+        <FormJugada />
       </main>
     </div>
   );
