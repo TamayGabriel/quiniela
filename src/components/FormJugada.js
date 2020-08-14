@@ -1,14 +1,27 @@
 import React, { Fragment, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 
 import PropTypes from "prop-types";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 import NumberFormat from "react-number-format";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+import { green, purple, common } from "@material-ui/core/colors";
+
+const ColorButton = withStyles((theme) => ({
+  root: {
+    color: theme.palette.getContrastText("#224858"),
+    backgroundColor: "#224858",
+    "&:hover": {
+      backgroundColor: "#51c4f5",
+      color: common["black"],
+    },
+  },
+}))(Button);
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,6 +34,9 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: "center",
     backgroundColor: "#f3eae8",
+  },
+  margin: {
+    margin: theme.spacing(1),
   },
 }));
 
@@ -139,10 +155,14 @@ const Formulario = () => {
                     inputComponent: NumberFormatCustom,
                   }}
                 />
-
-                <button type="submit" className="btn btn-primary">
+                <ColorButton
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  className={classes.margin}
+                >
                   Enviar
-                </button>
+                </ColorButton>
               </div>
             </form>
           </Paper>
